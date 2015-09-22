@@ -2,6 +2,7 @@
 //
 // Authors:
 //   Stefan Lange (mailto:Stefan.Lange@pdfsharp.com)
+#define WPF
 //
 // Copyright (c) 2005-2009 empira Software GmbH, Cologne (Germany)
 //
@@ -31,6 +32,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Text;
 using System.IO;
 #if GDI
@@ -399,8 +401,8 @@ namespace PdfSharp.Drawing.Pdf
 #endif
 #if WPF && !GDI
       Realize(pen, brush);
-      AppendPath(path.pathGeometry);
-      AppendStrokeFill(pen, brush, path.FillMode, false);
+      var fill = AppendPath(path.pathGeometry);
+      AppendStrokeFill(pen, fill ? brush : null, path.FillMode, false);
 #endif
 #if WPF && GDI
       Realize(pen, brush);
@@ -520,7 +522,7 @@ namespace PdfSharp.Drawing.Pdf
           int glyphID = 0;
           if (descriptor.fontData.cmap.symbol)
           {
-            glyphID = (int)ch + (descriptor.fontData.os2.usFirstCharIndex & 0xFF00);
+            glyphID = (int)ch | (descriptor.fontData.os2.usFirstCharIndex & 0xFF00);
             glyphID = descriptor.CharCodeToGlyphIndex((char)glyphID);
           }
           else
@@ -1195,23 +1197,25 @@ namespace PdfSharp.Drawing.Pdf
     /// <summary>
     /// Appends the content of a PathGeometry object.
     /// </summary>
-    internal void AppendPath(PathGeometry geometry)
+    internal bool AppendPath(PathGeometry geometry)
     {
+      bool filled = true;
 #if true_
       // sissy version
       geometry = geometry.GetFlattenedPathGeometry();
 #endif
       foreach (PathFigure figure in geometry.Figures)
       {
+        filled &= figure.IsFilled;
         System.Windows.Point currentPoint = new System.Windows.Point();
 
         // Move to start point
         currentPoint = figure.StartPoint;
         AppendFormat("{0:0.####} {1:0.####} m\n", currentPoint.X, currentPoint.Y);
-
+          
         foreach (PathSegment segment in figure.Segments)
-        {
-          Type type = segment.GetType();
+        {            
+          Type type = segment.GetType();            
           if (type == typeof(LineSegment))
           {
             // Draw a single line
@@ -1284,6 +1288,8 @@ namespace PdfSharp.Drawing.Pdf
         if (figure.IsClosed)
           Append("h\n");
       }
+
+      return filled;
     }
 #endif
 

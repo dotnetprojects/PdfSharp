@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Text;
 using PdfSharp.Xps.XpsModel;
 using PdfSharp.Pdf;
@@ -402,8 +403,8 @@ namespace PdfSharp.Xps.Rendering
           if (path.Stroke != null)
             RealizeStroke(path);
 
-          WriteGeometry(path.Data);
-          WritePathFillStroke(path);
+          var filled = WriteGeometry(path.Data);
+          WritePathFillStroke(path, filled);
         }
         else if ((lgBrush = path.Fill as LinearGradientBrush) != null)
         {
@@ -890,8 +891,10 @@ namespace PdfSharp.Xps.Rendering
     /// <summary>
     /// Writes the specified PathGeometry to the content stream.
     /// </summary>
-    internal void WriteGeometry(PathGeometry geo)
+    internal bool WriteGeometry(PathGeometry geo)
     {
+      var filled = true;
+
       BeginGraphic();
 
       // PathGeometry itself may have its own transform
@@ -903,6 +906,8 @@ namespace PdfSharp.Xps.Rendering
 
       foreach (PathFigure figure in geo.Figures)
       {
+        filled &= figure.IsFilled;
+
         PolyLineSegment pseg;
         PolyBezierSegment bseg;
         ArcSegment aseg;
@@ -943,6 +948,7 @@ namespace PdfSharp.Xps.Rendering
         if (figure.IsClosed)
           WriteLiteral("h\n"); // Close current figure
       }
+      return filled;
     }
 
     /// <summary>
@@ -1056,7 +1062,7 @@ namespace PdfSharp.Xps.Rendering
     /// <summary>
     /// Writes the path fill and/or stroke operators to the content stream.
     /// </summary>
-    internal void WritePathFillStroke(Path path)
+    internal void WritePathFillStroke(Path path, bool filled = true)
     {
       if (path.Data.FillRule == FillRule.NonZero) // NonZero means Winding
       {
@@ -1069,7 +1075,7 @@ namespace PdfSharp.Xps.Rendering
       }
       else
       {
-        if (path.Fill != null && path.Stroke != null)
+        if (path.Fill != null && filled && path.Stroke != null)
           WriteLiteral("B*\n");
         else if (path.Stroke != null)
           WriteLiteral("S\n");
