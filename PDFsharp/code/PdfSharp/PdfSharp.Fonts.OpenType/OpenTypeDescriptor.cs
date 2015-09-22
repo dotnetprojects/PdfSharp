@@ -229,7 +229,7 @@ namespace PdfSharp.Fonts.OpenType
         int glyphIndex;
         if (symbol)
         {
-          glyphIndex = idx + (this.fontData.os2.usFirstCharIndex & 0xFF00);
+          glyphIndex = idx | (this.fontData.os2.usFirstCharIndex & 0xFF00);
           glyphIndex = CharCodeToGlyphIndex((char)glyphIndex);
         }
         else

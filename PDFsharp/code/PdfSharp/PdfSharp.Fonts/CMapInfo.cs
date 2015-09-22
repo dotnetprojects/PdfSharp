@@ -68,7 +68,7 @@ namespace PdfSharp.Fonts
             {
               if (symbol)
               {
-                glyphIndex = ch + (descriptor.fontData.os2.usFirstCharIndex & 0xFF00); // @@@
+                glyphIndex = ch | (descriptor.fontData.os2.usFirstCharIndex & 0xFF00); // @@@
                 glyphIndex = descriptor.CharCodeToGlyphIndex((char)glyphIndex);
               }
               else

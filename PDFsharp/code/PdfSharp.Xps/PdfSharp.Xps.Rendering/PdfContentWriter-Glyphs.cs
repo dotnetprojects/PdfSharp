@@ -128,7 +128,7 @@ namespace PdfSharp.Xps.Rendering
           int glyphID = 0;
           if (descriptor.fontData.cmap.symbol)
           {
-            glyphID = (int)ch + (descriptor.fontData.os2.usFirstCharIndex & 0xFF00);
+            glyphID = (int)ch | (descriptor.fontData.os2.usFirstCharIndex & 0xFF00);
             glyphID = descriptor.CharCodeToGlyphIndex((char)glyphID);
           }
           else

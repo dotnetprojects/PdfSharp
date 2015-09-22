@@ -215,7 +215,7 @@ namespace PdfSharp.Pdf.Advanced
           int glyphIndex;
           if (symbol)
           {
-            glyphIndex = (int)ch + (descriptor.fontData.os2.usFirstCharIndex & 0xFF00);
+            glyphIndex = (int)ch | (descriptor.fontData.os2.usFirstCharIndex & 0xFF00);
             glyphIndex = descriptor.CharCodeToGlyphIndex((char)glyphIndex);
           }
           else
