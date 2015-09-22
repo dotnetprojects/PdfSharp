@@ -2,9 +2,9 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{22010032-52DC-464D-B8BB-6CD9BF230D1F}</ProjectGuid>
+    <ProjectGuid>{00416AAB-3EEE-44A2-923B-86782560CE00}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ApplicationIcon>
@@ -29,8 +29,7 @@
     </UpgradeBackupLocation>
     <SignAssembly>true</SignAssembly>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -43,6 +42,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <SccProjectName>
@@ -53,6 +53,7 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -61,9 +62,8 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE;DEBUG;NET_2_0</DefineConstants>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DocumentationFile>bin\Debug\MigraDoc.RtfRendering.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -76,6 +76,7 @@
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -84,9 +85,9 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE;NET_2_0</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <DocumentationFile>bin\Release\MigraDoc.RtfRendering.xml</DocumentationFile>
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
     <NoWarn>1591</NoWarn>
@@ -95,9 +96,10 @@
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningLevel>4</WarningLevel>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
@@ -254,29 +256,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="VersionInfo.cs" />
-    <EmbeddedResource Include="MigraDoc.RtfRendering.Resources\Messages.de.restext" />
-    <EmbeddedResource Include="MigraDoc.RtfRendering.Resources\Messages.restext" />
     <EmbeddedResource Include="MigraDoc.RtfRendering.Resources\PDF.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\PDFsharp\code\PdfSharp.Charting\PdfSharp.Charting.csproj">
-      <Project>{CFDB7D46-EA8D-47DE-B10A-9E755A1B48BA}</Project>
-      <Name>PdfSharp.Charting</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\PDFsharp\code\PdfSharp\PdfSharp.csproj">
-      <Project>{5384CE57-1F94-4D22-860D-2E9C1AC12DDF}</Project>
-      <Name>PdfSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MigraDoc.DocumentObjectModel\MigraDoc.DocumentObjectModel.csproj">
-      <Project>{4666ABF3-EFE5-49BD-B2E8-9E04F5949145}</Project>
-      <Name>MigraDoc.DocumentObjectModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MigraDoc.Rendering\MigraDoc.Rendering.csproj">
-      <Project>{FEBBE5BE-9F58-4967-BBCF-801F1CFCD774}</Project>
-      <Name>MigraDoc.Rendering</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="MigraDoc.RtfRendering.Resources\Messages.de.restext" />
+    <EmbeddedResource Include="MigraDoc.RtfRendering.Resources\Messages.restext" />
     <None Include="StrongnameKey.snk" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +283,24 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\PDFsharp\code\PdfSharp.Charting\PdfSharp.Charting.csproj">
+      <Project>{E6A2734E-0CD6-4210-8AEC-47EE348F8D78}</Project>
+      <Name>PdfSharp.Charting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\PDFsharp\code\PdfSharp\PdfSharp.csproj">
+      <Project>{02fcc0bb-2aa2-43ba-8d2f-66d168b87a1d}</Project>
+      <Name>PdfSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MigraDoc.DocumentObjectModel\MigraDoc.DocumentObjectModel.csproj">
+      <Project>{769E6587-72F9-475C-9422-D43ACD4C7AC1}</Project>
+      <Name>MigraDoc.DocumentObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MigraDoc.Rendering\MigraDoc.Rendering.csproj">
+      <Project>{497784DA-4FDD-43E5-BC4E-6702C8F1AEE0}</Project>
+      <Name>MigraDoc.Rendering</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

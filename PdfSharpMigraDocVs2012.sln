@@ -1,17 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfSharp-WPF", "PDFsharp\code\PdfSharp\PdfSharp-WPF.csproj", "{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigraDoc.DocumentObjectModel", "MigraDoc\code\MigraDoc.DocumentObjectModel\MigraDoc.DocumentObjectModel.csproj", "{769E6587-72F9-475C-9422-D43ACD4C7AC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigraDoc.DocumentObjectModel-WPF", "MigraDoc\code\MigraDoc.DocumentObjectModel\MigraDoc.DocumentObjectModel-WPF.csproj", "{769E6587-72F9-475C-9422-D43ACD4C7AC1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigraDoc.Rendering-WPF", "MigraDoc\code\MigraDoc.Rendering\MigraDoc.Rendering-WPF.csproj", "{497784DA-4FDD-43E5-BC4E-6702C8F1AEE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigraDoc.Rendering", "MigraDoc\code\MigraDoc.Rendering\MigraDoc.Rendering.csproj", "{497784DA-4FDD-43E5-BC4E-6702C8F1AEE0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfSharpMigraDocTestApp", "PdfSharpMigraDocTestApp\PdfSharpMigraDocTestApp.csproj", "{608A1880-45C7-4DFF-9963-7283E6A17B62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfSharp.Charting-WPF", "PDFsharp\code\PdfSharp.Charting\PdfSharp.Charting-WPF.csproj", "{E6A2734E-0CD6-4210-8AEC-47EE348F8D78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfSharp.Charting", "PDFsharp\code\PdfSharp.Charting\PdfSharp.Charting.csproj", "{E6A2734E-0CD6-4210-8AEC-47EE348F8D78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - MigraDoc", "2 - MigraDoc", "{F8CDC1F7-86FA-4A9D-BC4F-D8844C2AF2E7}"
 EndProject
@@ -19,9 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - PdfSharp", "1 - PdfShar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "9 - Test", "9 - Test", "{99030444-6FEF-4426-B4A8-44810D21FDAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigraDoc.RtfRendering-WPF", "MigraDoc\code\MigraDoc.RtfRendering\MigraDoc.RtfRendering-WPF.csproj", "{00416AAB-3EEE-44A2-923B-86782560CE00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigraDoc.RtfRendering", "MigraDoc\code\MigraDoc.RtfRendering\MigraDoc.RtfRendering.csproj", "{00416AAB-3EEE-44A2-923B-86782560CE00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfSharp.Xps", "PDFsharp\code\PdfSharp.Xps\PdfSharp.Xps.csproj", "{0BC3964B-A3BC-49D5-9B7C-463299B5A166}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfSharp", "PDFsharp\code\PdfSharp\PdfSharp.csproj", "{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{769E6587-72F9-475C-9422-D43ACD4C7AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{769E6587-72F9-475C-9422-D43ACD4C7AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{769E6587-72F9-475C-9422-D43ACD4C7AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,17 +53,21 @@ Global
 		{0BC3964B-A3BC-49D5-9B7C-463299B5A166}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BC3964B-A3BC-49D5-9B7C-463299B5A166}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BC3964B-A3BC-49D5-9B7C-463299B5A166}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D} = {846D2FF9-01C9-4511-A00C-BEFBE215A1E1}
 		{769E6587-72F9-475C-9422-D43ACD4C7AC1} = {F8CDC1F7-86FA-4A9D-BC4F-D8844C2AF2E7}
 		{497784DA-4FDD-43E5-BC4E-6702C8F1AEE0} = {F8CDC1F7-86FA-4A9D-BC4F-D8844C2AF2E7}
 		{608A1880-45C7-4DFF-9963-7283E6A17B62} = {99030444-6FEF-4426-B4A8-44810D21FDAF}
 		{E6A2734E-0CD6-4210-8AEC-47EE348F8D78} = {846D2FF9-01C9-4511-A00C-BEFBE215A1E1}
 		{00416AAB-3EEE-44A2-923B-86782560CE00} = {F8CDC1F7-86FA-4A9D-BC4F-D8844C2AF2E7}
 		{0BC3964B-A3BC-49D5-9B7C-463299B5A166} = {846D2FF9-01C9-4511-A00C-BEFBE215A1E1}
+		{02FCC0BB-2AA2-43BA-8D2F-66D168B87A1D} = {846D2FF9-01C9-4511-A00C-BEFBE215A1E1}
 	EndGlobalSection
 EndGlobal

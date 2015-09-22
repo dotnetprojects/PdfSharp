@@ -4,7 +4,7 @@
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4666ABF3-EFE5-49BD-B2E8-9E04F5949145}</ProjectGuid>
+    <ProjectGuid>{769E6587-72F9-475C-9422-D43ACD4C7AC1}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ApplicationIcon>
@@ -30,7 +30,7 @@
     <SignAssembly>true</SignAssembly>
     <OldToolsVersion>3.5</OldToolsVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -53,6 +53,7 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -75,6 +76,7 @@
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -85,18 +87,19 @@
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE</DefineConstants>
     <DocumentationFile>bin\Release\MigraDoc.DocumentObjectModel.xml</DocumentationFile>
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
     <NoWarn>1591</NoWarn>
     <Optimize>true</Optimize>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningLevel>4</WarningLevel>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
@@ -105,10 +108,7 @@
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
-    <Reference Include="System.Drawing">
-      <Name>System.Drawing</Name>
-    </Reference>
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
@@ -376,24 +376,12 @@
     <Compile Include="MigraDoc.DocumentObjectModel.Tables\Table.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\CellComparer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\DocumentObjectVisitor.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\IDomVisitable.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\MergedCellList.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\PdfFlattenVisitor.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\RtfFlattenVisitor.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\CellComparer.cs" />
+    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\DocumentObjectVisitor.cs" />
+    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\IDomVisitable.cs" />
+    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\MergedCellList.cs" />
+    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\PdfFlattenVisitor.cs" />
+    <Compile Include="MigraDoc.DocumentObjectModel.Visitors\RtfFlattenVisitor.cs" />
     <Compile Include="MigraDoc.DocumentObjectModel.Visitors\VisitorBase.cs" />
     <Compile Include="MigraDoc.DocumentObjectModel\Border.cs">
       <SubType>Code</SubType>
@@ -591,8 +579,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="MigraDoc.DocumentObjectModel.Resources\Messages.de.restext" />
-    <EmbeddedResource Include="MigraDoc.DocumentObjectModel.Resources\Messages.restext" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -600,6 +586,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MigraDoc.DocumentObjectModel.Resources\Messages.de.restext" />
+    <EmbeddedResource Include="MigraDoc.DocumentObjectModel.Resources\Messages.restext" />
     <None Include="StrongnameKey.snk" />
   </ItemGroup>
   <ItemGroup>

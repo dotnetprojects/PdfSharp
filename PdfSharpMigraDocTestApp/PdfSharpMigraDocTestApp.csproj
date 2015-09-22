@@ -50,17 +50,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MigraDoc\code\MigraDoc.DocumentObjectModel\MigraDoc.DocumentObjectModel-WPF.csproj">
+    <ProjectReference Include="..\MigraDoc\code\MigraDoc.DocumentObjectModel\MigraDoc.DocumentObjectModel.csproj">
       <Project>{769e6587-72f9-475c-9422-d43acd4c7ac1}</Project>
-      <Name>MigraDoc.DocumentObjectModel-WPF</Name>
+      <Name>MigraDoc.DocumentObjectModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MigraDoc\code\MigraDoc.Rendering\MigraDoc.Rendering-WPF.csproj">
+    <ProjectReference Include="..\MigraDoc\code\MigraDoc.Rendering\MigraDoc.Rendering.csproj">
       <Project>{497784da-4fdd-43e5-bc4e-6702c8f1aee0}</Project>
-      <Name>MigraDoc.Rendering-WPF</Name>
+      <Name>MigraDoc.Rendering</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PDFsharp\code\PdfSharp\PdfSharp-WPF.csproj">
+    <ProjectReference Include="..\PDFsharp\code\PdfSharp\PdfSharp.csproj">
       <Project>{02fcc0bb-2aa2-43ba-8d2f-66d168b87a1d}</Project>
-      <Name>PdfSharp-WPF</Name>
+      <Name>PdfSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
