@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using PdfSharp.Xps.XpsModel;
 using PdfSharp.Pdf;
@@ -152,14 +153,14 @@ namespace PdfSharp.Xps.Rendering
       }
       else
       {
-#if true
+#if true //Change by jogibear9988 -> Glyphs were empty 
         //if (glyphs.BidiLevel % 2 == 1)
         //  WriteLiteral("-1 Tc\n");
 
         if (!textMatrix.IsIdentity)
           WriteTextTransform(textMatrix);
 
-        WriteGlyphsInternal(glyphs, null);
+        WriteGlyphsInternal(glyphs, text);
 #else
         XPoint pos = new XPoint(x, y);
         AdjustTextMatrix(ref pos);
@@ -190,7 +191,7 @@ namespace PdfSharp.Xps.Rendering
           break;
 
         case GlyphIndicesComplexity.ClusterMapping:
-          WriteGlyphs_ClusterMapping(glyphs);
+          WriteGlyphs_ClusterMapping(glyphs, text);
           break;
       }
     }
@@ -351,7 +352,7 @@ namespace PdfSharp.Xps.Rendering
     /// <summary>
     /// This is just a draft to see what to do in detail.
     /// </summary>
-    private void WriteGlyphs_ClusterMapping(Glyphs glyphs)
+    private void WriteGlyphs_ClusterMapping(Glyphs glyphs, string text)
     {
       string unicodeString = glyphs.UnicodeString;
 #if DEBUG_
@@ -407,12 +408,15 @@ namespace PdfSharp.Xps.Rendering
             mapping = indices[glyphIdx + clusterGlyphIdx];
 
           Debug.Assert(mustRender == false);
-
+           
           // Determine whether to render accumulated glyphs
           if (outputGlyphCount > 0 && (hasOffset || mapping.HasAdvanceWidthOrOffset))
           {
             outputText.Append('>');
 
+            //var rendertext = outputText.ToString();
+            //if (rendertext.Substring(1, rendertext.Length - 2).All(x => x == '0'))
+            //  rendertext = text;
             WriteLiteral("{0:0.####} {1:0.####} Td {2}Tj\n", pos.x, pos.y, outputText.ToString());
 
             //double width = descriptor.GlyphIndexToPdfWidth(glyphIndex);
@@ -495,7 +499,10 @@ namespace PdfSharp.Xps.Rendering
           {
             outputText.Append('>');
 
-            WriteLiteral("{0:0.####} {1:0.####} Td {2}Tj\n", pos.x, pos.y, outputText.ToString());
+            var rendertext = outputText.ToString();
+            if (rendertext.Substring(1, rendertext.Length - 2).All(j => j == '0'))
+              rendertext = text;
+            WriteLiteral("{0:0.####} {1:0.####} Td {2}Tj\n", pos.x, pos.y, rendertext);
 
             double width = descriptor.GlyphIndexToPdfWidth(glyphIndex);
             if (!PdfSharp.Internal.DoubleUtil.IsNaN(mapping.AdvanceWidth))
