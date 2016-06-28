@@ -404,6 +404,10 @@ namespace PdfSharp.Xps.Rendering
             RealizeStroke(path);
 
           var filled = WriteGeometry(path.Data);
+
+          if (path.Data.Figures.Count == 1)
+            filled = true;
+
           WritePathFillStroke(path, filled);
         }
         else if ((lgBrush = path.Fill as LinearGradientBrush) != null)
