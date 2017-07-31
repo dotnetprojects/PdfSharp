@@ -36,7 +36,6 @@ using System.Runtime.CompilerServices;
 // associated with an assembly.
 //
 [assembly: AssemblyTitle("PDFsharp Charting")]
-[assembly: AssemblyVersion(PdfSharp.ProductVersionInfo.Version)]
 [assembly: AssemblyDescription("A .NET charting library based on PDFsharp.")]
 [assembly: AssemblyConfiguration(PdfSharp.ProductVersionInfo.Configuration)]
 [assembly: AssemblyCompany(PdfSharp.ProductVersionInfo.Company)]
@@ -52,3 +51,6 @@ using System.Runtime.CompilerServices;
 
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyName("")]
+
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

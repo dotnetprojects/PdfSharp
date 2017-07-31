@@ -41,7 +41,6 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 //
 [assembly: AssemblyTitle(PdfSharp.VersionInfo.Title)]
-[assembly: AssemblyVersion(PdfSharp.VersionInfo.Version)]
 [assembly: AssemblyDescription(PdfSharp.VersionInfo.Description)]
 [assembly: AssemblyConfiguration(PdfSharp.VersionInfo.Configuration)]
 [assembly: AssemblyCompany(PdfSharp.VersionInfo.Company)]
@@ -62,3 +61,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyName("")]
 [assembly: ComVisibleAttribute(false)]
+
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
