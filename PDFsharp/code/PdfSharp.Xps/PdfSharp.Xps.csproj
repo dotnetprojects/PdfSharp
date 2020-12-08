@@ -9,7 +9,7 @@
     <Company>DotNetProjects</Company>
     <Product>DotNetProjects.PdfSharp.Xps</Product>
     <PackageId>DotNetProjects.PdfSharp.Xps</PackageId>
-    <PackageLicenseExpression>MPL</PackageLicenseExpression>
+    <PackageLicenseExpression>MPL-1.1</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/dotnetprojects/PdfSharp</PackageProjectUrl>
   </PropertyGroup>
 
