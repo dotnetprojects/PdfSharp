@@ -1,15 +1,19 @@
-version: 2.0.{build}
+version: 3.0.{build}
+
+image: Visual Studio 2019
 
 branches:
   only:
     - master
 
-assembly_info:
+dotnet_csproj:
   patch: true
-  file: AssemblyInfo.*
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
 
 configuration: Debug
 
@@ -19,20 +23,9 @@ before_build:
 build:
   project: PdfSharpMigraDocVs2012.sln
 
-after_build:
-  - ps: .\nuget\pack.ps1
-
 test: off
 
 artifacts:
-  - path: PDFsharp\code\PdfSharp\bin\Debug\PdfSharp.dll
-  - path: PDFsharp\code\PdfSharp\bin\Debug\PdfSharp.pdb
-  - path: PDFsharp\code\PdfSharp\bin\Debug\PdfSharp.xml
-  - path: PDFsharp\code\PdfSharp.Charting\bin\Debug\PdfSharp.Charting.dll
-  - path: PDFsharp\code\PdfSharp.Charting\bin\Debug\PdfSharp.Charting.pdb
-  - path: PDFsharp\code\PdfSharp.Charting\bin\Debug\PdfSharp.Charting.xml
-  - path: PDFsharp\code\PdfSharp.Xps\bin\Debug\PdfSharp.Xps.dll
-  - path: PDFsharp\code\PdfSharp.Xps\bin\Debug\PdfSharp.Xps.pdb
   - path: '**\DotNetProjects.PdfSharp*.nupkg'
 
 #uncomment to publish to NuGet
